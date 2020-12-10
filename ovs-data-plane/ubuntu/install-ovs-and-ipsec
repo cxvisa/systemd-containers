@@ -1,10 +1,11 @@
 #!/bin/bash -x
 
-apt-get -y install strongswan dkms
+apt-get -y install strongswan dkms patch diffutils
 systemctl start strongswan-starter
 cd
 wget https://www.openvswitch.org/releases/openvswitch-2.14.0.tar.gz
 tar -zxvf openvswitch-2.14.0.tar.gz
+patch -p 0 < /buildContext/ovs-strongswan-conf.patch
 cd openvswitch-2.14.0
 apt install -y graphviz autoconf automake bzip2 debhelper dh-autoreconf libssl-dev libtool openssl procps python3-all python3-sphinx python3-twisted python3-zope.interface libunbound-dev libunwind-dev dh-python uuid-runtime libelf-dev
 DEB_BUILD_OPTIONS='parallel=8 nocheck' fakeroot debian/rules binary
