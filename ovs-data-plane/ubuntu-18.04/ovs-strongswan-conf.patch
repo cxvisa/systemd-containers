@@ -1,0 +1,26 @@
+diff -uNr openvswitch-2.14.0/ipsec/ovs-monitor-ipsec.in b/ipsec/ovs-monitor-ipsec.in
+--- openvswitch-2.14.0/ipsec/ovs-monitor-ipsec.in	2020-08-17 14:29:13.316524451 -0700
++++ b/ipsec/ovs-monitor-ipsec.in	2020-12-09 17:41:07.172283674 -0800
+@@ -145,10 +145,18 @@
+     """This class does StrongSwan specific configurations."""
+ 
+     STRONGSWAN_CONF = """%s
+-charon.plugins.kernel-netlink.set_proto_port_transport_sa = yes
+-charon.plugins.kernel-netlink.xfrm_ack_expires = 10
+-charon.load_modular = yes
+-charon.plugins.gcm.load = yes
++charon {
++  plugins {
++    kernel-netlink {
++      set_proto_port_transport_sa = yes
++     xfrm_ack_expires = 10
++    }
++    gcm {
++      load = yes
++    }
++  }
++  load_modular = yes
++}
+ """ % (FILE_HEADER)
+ 
+     CONF_HEADER = """%s
