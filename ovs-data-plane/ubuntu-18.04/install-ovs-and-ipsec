@@ -3,10 +3,9 @@
 apt-get -y install strongswan dkms patch diffutils
 systemctl start strongswan-starter
 cd
-wget https://www.openvswitch.org/releases/openvswitch-2.14.0.tar.gz
-tar -zxvf openvswitch-2.14.0.tar.gz
-patch -p 0 < /buildContext/ovs-strongswan-conf.patch
-cd openvswitch-2.14.0
+wget https://www.openvswitch.org/releases/openvswitch-2.14.2.tar.gz
+tar -zxvf openvswitch-2.14.2.tar.gz
+cd openvswitch-2.14.2
 apt install -y graphviz autoconf automake bzip2 debhelper dh-autoreconf libssl-dev libtool openssl procps python3-all python3-sphinx python3-twisted python3-zope.interface libunbound-dev libunwind-dev dh-python uuid-runtime libelf-dev
 DEB_BUILD_OPTIONS='parallel=8 nocheck' fakeroot debian/rules binary
 cd ..
@@ -14,6 +13,6 @@ dpkg -i libopenvswitch_*.deb openvswitch-common_*.deb openvswitch-switch_*.deb o
 dpkg -i libopenvswitch_*.deb openvswitch-common_*.deb openvswitch-switch_*.deb openvswitch-datapath-dkms_*.deb python3-openvswitch_*.deb openvswitch-pki_*.deb openvswitch-ipsec_*.deb
 cp -r /usr/lib/python3.7/dist-packages/ /usr/lib/python3.8/
 
-rm -rf openvswitch-2.14.0*
+rm -rf openvswitch-2.14.2*
 rm -rf *.deb
 
