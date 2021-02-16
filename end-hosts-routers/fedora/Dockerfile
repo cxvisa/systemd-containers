@@ -25,6 +25,7 @@ RUN /buildContext/enable-frr-ripd.sh
 
 RUN mkdir -p /root/bin
 
+RUN cp /buildContext/frr-ripd-wait.sh /root/bin/frr-ripd-wait.sh
 RUN cp /buildContext/frr-ripd-network.sh /root/bin/frr-ripd-network.sh
 RUN cp /buildContext/frr-ripd-route.sh /root/bin/frr-ripd-route.sh
 
