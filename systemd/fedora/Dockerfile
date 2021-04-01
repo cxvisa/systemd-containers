@@ -10,7 +10,7 @@ RUN ls /usr/sbin/init
 
 FROM builder
 
-RUN dnf -y install wget iperf iperf3 nc nftables iptables procps tcpdump hostname openvswitch openvswitch-test libreswan openvswitch-ipsec iproute net-tools iputils traceroute procps
+RUN dnf -y install wget iperf iperf3 nc nftables iptables procps tcpdump hostname openvswitch openvswitch-test libreswan openvswitch-ipsec iproute net-tools iputils traceroute procps dhclient
 
 RUN systemctl set-default multi-user.target
 
