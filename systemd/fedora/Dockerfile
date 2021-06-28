@@ -18,6 +18,9 @@ RUN systemctl disable dnf-makecache
 RUN systemctl disable dnf-makecache.timer
 
 RUN dnf clean all
+RUN adduser -d /home/wavelets wavelets
+RUN echo wavelets:wavelets | chpasswd
+RUN usermod -aG wheel wavelets
 
 ENTRYPOINT [ "/usr/sbin/init" ]
 
