@@ -15,8 +15,6 @@ RUN systemctl set-default multi-user.target
 
 RUN /buildContext/install-docker-ce
 
-RUN /buildContext/install-ovs-and-ipsec
-
 RUN apt-get -y autoclean
 
 ENTRYPOINT [ "/sbin/init" ]
