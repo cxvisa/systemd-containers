@@ -21,11 +21,11 @@ RUN systemctl disable dnf-makecache.timer
 
 RUN dnf clean all
 
-RUN /buildContext/enable-frr-ripd.sh
+RUN /buildContext/enable-frr-daemons.sh
 
 RUN mkdir -p /root/bin
 
-RUN cp /buildContext/frr-ripd-wait.sh /root/bin/frr-ripd-wait.sh
+RUN cp /buildContext/frr-daemons-wait.sh /root/bin/frr-daemons-wait.sh
 RUN cp /buildContext/frr-ripd-network.sh /root/bin/frr-ripd-network.sh
 RUN cp /buildContext/frr-ripd-route.sh /root/bin/frr-ripd-route.sh
 
